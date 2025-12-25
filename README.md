@@ -18,7 +18,7 @@ This project demonstrates passive cooling advantages for sustainable computing i
 
 ## Theory Background
 
-Radiative cooling follows Planck's law for spectral radiance and the Stefan-Boltzmann law for total power: \( P = \epsilon \sigma T^4 \), where \(\epsilon\) is emissivity, \(\sigma\) is the constant, and \(T\) is temperature.
+Radiative cooling follows Planck's law for spectral radiance and the Stefan-Boltzmann law for total power: $ \( P = \epsilon \sigma T^4 \), where \(\epsilon\) is emissivity, \(\sigma\) is the constant, and \(T\) is temperature. $
 
 In space:
 - No convection/conduction; heat rejection is purely radiative.
