@@ -19,6 +19,9 @@ def planck_graph(wavelengths, temperatures): # Function to plot Planck's Law
         intensity = (2 * h * c**2) / (wavelengths**5) * (1 / (np.exp((h * c) / (wavelengths * k * T)) - 1))
         plt.plot(wavelengths * 1e9, intensity, label=f'T = {T} K')  # Convert wavelengths to nm for plotting
 
+    # Highlight visible light spectrum (400-700 nm)
+    plt.axvspan(400, 700, alpha=0.2, color='blue', label='Visible Light Spectrum')
+    
     plt.title("Planck's Law for Blackbody Radiation")
     plt.xlabel("Wavelength (nm)")
     plt.ylabel("Spectral Radiance (W·sr⁻¹·m⁻³)")

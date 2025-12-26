@@ -20,3 +20,16 @@
 | k      | Boltzmann constant       | 1.380649 × 10⁻²³               | J/K            | Thermal energy per degree |
 | e      | Euler's number           | ≈ 2.71828                      | dimensionless  | Base of natural log |
 
+## Note the Separation
+- $ B(\lambda, T) = \frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c / \lambda k T} - 1} $
+
+- $\frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c / \lambda k T} - 1} $
+
+- $\frac{2 h c^2}{\lambda^5} * \frac{1}{e^{h c / \lambda k T} - 1} $
+
+    - ($\frac{2 h c^2}{\lambda^5}$) the classical wave physics
+    - ($\frac{1}{e^{h c / \lambda k T} - 1} $) the quantum marriage by Planck, allows wavelengths to not explode to infinity ($\infin$) when reaching small wavelengths ($\lambda$) 
+
+## Graphing Planck's Law
+
+<img src="/Images/planck_radiation.png" alt="Planck Radiation Graph" width="500" height="300">
