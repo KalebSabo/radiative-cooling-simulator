@@ -36,4 +36,5 @@ $T$ : Absolute temperature in Kelvin (K).
     - Thus, emissivity of genuine, real world material should fall into this range. 
 
 ## Example Application
-- In SpaceX's Starship, the *emissivity* of tiles (that are a close *perfect* black body ~0.9 $\epsilon$) prevents heating the steel interior (shiny white body)
+- In **SpaceX's Starship**, the *emissivity* of the black tiles (that are a close *perfect* black body ~0.9 $\epsilon$) prevents heating the steel interior (shiny white body) as it radiates nearly 500 kilowatts of energy per square meter out and away into space
+    - essentially it is really close to shedding as much heat as it takes. 

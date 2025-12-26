@@ -1,10 +1,14 @@
-# Planck's Law and Blackbody Radiation
-## **Every object emits thermal radiation based on its temperature.** 
-- A perfect *Blackbody* absorbs all incoming radiation and emits according to Planck's Law.
+# **Planck's Law**
 
-    $ B(\lambda, T) = \frac{2hc^2}{\lambda^5} \frac{1}{e^{hc/\lambda kT} - 1} $
+## Origin
+- Planck's law (introduced by Max Planck in 1900–1901) is the foundational equation describing the spectral distribution of electromagnetic radiation emitted by a black body in thermal equilibrium at a given temperature $T$. It resolved the "ultraviolet catastrophe" of classical physics and marked the birth of quantum mechanics.
 
-# Planck's Law Symbols
+## Statement
+- The spectral radiance $B(\lambda, T)$ — the power emitted per unit area per unit solid angle per unit wavelength — is:
+
+    $ B(\lambda, T) = \frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c / \lambda k T} - 1} $
+
+## Planck's Law Symbols
 
 | Symbol | Name                     | Value                          | Units          | Description |
 |--------|--------------------------|--------------------------------|----------------|-------------|
