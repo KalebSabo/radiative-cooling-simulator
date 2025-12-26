@@ -6,7 +6,7 @@
 ## Statement
 - The spectral radiance $B(\lambda, T)$ — the power emitted per unit area per unit solid angle per unit wavelength — is:
 
-    $ B(\lambda, T) = \frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c / \lambda k T} - 1} $
+    $B(\lambda, T) = \frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c / \lambda k T} - 1} $
 
 ## Planck's Law Symbols
 
@@ -21,7 +21,7 @@
 | e      | Euler's number           | ≈ 2.71828                      | dimensionless  | Base of natural log |
 
 ## Note the Separation
-- $ B(\lambda, T) = \frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c / \lambda k T} - 1} $
+- $B(\lambda, T) = \frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c / \lambda k T} - 1} $
 
 - $\frac{2 h c^2}{\lambda^5} \frac{1}{e^{h c / \lambda k T} - 1} $
 
