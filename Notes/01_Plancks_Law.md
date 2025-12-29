@@ -33,3 +33,5 @@
 ## Graphing Planck's Law
 
 <img src="/Images/planck_radiation.png" alt="Planck Radiation Graph" width="500" height="300">
+
+- This graph charts the spectral radiance (aka spectral specific intensity) vs. 

@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 temperatures = [300, 500, 1800, 5800]  # Temperatures in Kelvin, room temp, red-hot, Starship, Sun
-wavelengths = np.linspace(1e-9, 3e-6, 1000)  # Wavelengths from 1 nm to 3 µm
+wavelengths = np.linspace(1e-9, 3e-6, 1000)  # Wavelengths from 1 nm to 100 mm
 
 def planck_graph(wavelengths, temperatures): # Function to plot Planck's Law
     h = 6.626e-34  # Planck's constant in J·s
@@ -29,7 +29,7 @@ def planck_graph(wavelengths, temperatures): # Function to plot Planck's Law
     plt.xscale('log')
     plt.legend()
     plt.grid(True)
-    plt.xlim(1, 3000)  # Wavelength range in nm
+    plt.xlim(1, 1e8)  # Wavelength range in nm
     plt.ylim(1e-20, 1e15)  # Intensity range
     plt.savefig('./Images/planck_radiation.png', dpi=300, bbox_inches='tight')
     print("Plot saved as planck_radiation.png")
