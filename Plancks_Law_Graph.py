@@ -29,7 +29,7 @@ def planck_graph(wavelengths, temperatures): # Function to plot Planck's Law
     plt.xscale('log')
     plt.legend()
     plt.grid(True)
-    plt.xlim(1, 1e8)  # Wavelength range in nm
+    plt.xlim(1, 3000)  # Wavelength range in nm
     plt.ylim(1e-20, 1e15)  # Intensity range
     plt.savefig('./Images/planck_radiation.png', dpi=300, bbox_inches='tight')
     print("Plot saved as planck_radiation.png")
