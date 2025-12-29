@@ -36,3 +36,4 @@ def planck_graph(wavelengths, temperatures): # Function to plot Planck's Law
     plt.show()
 
 planck_graph(wavelengths, temperatures)
+
