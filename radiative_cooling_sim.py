@@ -73,7 +73,7 @@ if __name__ == "__main__":
         """
         def balance(T):
             emitted = emitted_power(emissivity_ir, T)
-            absorbed_env = emissivity_ir * sigma * ambient_temperature**4
+            absorbed_env = emissivity_ir * sigma * ambient_temp**4
             absorbed_solar = absorptivity_solar * solar_flux
             return emitted - (absorbed_solar + absorbed_env)
         
