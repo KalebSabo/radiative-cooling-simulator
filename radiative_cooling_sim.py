@@ -19,11 +19,14 @@ if __name__ == "__main__":
     print("Radiative Cooling Simulator Module Loaded")
 
 
-    # Stefan-Boltzmann Constant
+# -------------------------- Constants --------------------------
+
     SIGMA = 5.670374419e-8  # W/m^2K^4
     H = 6.62607015e-34  # Planck's constant in J·s
     C = 3.0e8           # Speed of light in m/s
     K = 1.380649e-23    # Boltzmann's constant in J/K
+
+# -------------------------- Core Functions --------------------------
 
     def emitted_power(emissivity, T):
         """
@@ -53,12 +56,14 @@ if __name__ == "__main__":
         c = 3.0e8           # Speed of light in m/s
         k = 1.380649e-23    # Boltzmann's constant in J/K
         
-        exponent = (h * c) / (wavelength * k * T)
-        if exponent > 700:  # Prevent overflow in exp
+
+        # Prevent overflow
+        exponent = (H * C) / (wavelength * K * T)
+        if exponent > 700:  
             return np.zeros_like(wavelength)
         
-        numerator = 2.0 * h * c**2
-        denominator = (wavelength**5) * (np.exp((h * c) / (wavelength * k * T)) - 1)
+        numerator = 2.0 * H * C**2
+        denominator = (wavelength**5) * (np.exp((H * C) / (wavelength * K * T)) - 1)
         
         return numerator / denominator
 
@@ -82,8 +87,52 @@ if __name__ == "__main__":
             return emitted - (absorbed_solar + absorbed_env)
         
         
-        T_guess = 300.0 # Initial guess for temperature in Kelvin        
-        return fsolve(balance, T_guess)[0]
+        T_eq = 300.0 # Initial guess for temperature in Kelvin        
+        return fsolve(balance, T_eq)[0]
 
+# -------------------------- Material Presets --------------------------
 
+MATERIALS = {
+    "SpaceX Starship Tile (black coating)": {
+        "emissivity_ir": 0.90, "absorptivity_solar": 0.85
+    },
+    "White Paint (Z93-type)": {
+        "emissivity_ir": 0.90, "absorptivity_solar": 0.18
+    },
+    "Optical Solar Reflector (OSR)": {
+        "emissivity_ir": 0.85, "absorptivity_solar": 0.10
+    },
+    "Polished Aluminum": {
+        "emissivity_ir": 0.05, "absorptivity_solar": 0.12
+    },
+    "Ideal Radiator": {
+        "emissivity_ir": 1.00, "absorptivity_solar": 0.00
+    },
+    "Black Paint": {
+        "emissivity_ir": 0.95, "absorptivity_solar": 0.95
+    }
+}
 
+# -------------------------- Example Scenarios --------------------------
+
+SCENARIOS = {
+    "Deep Space (no sun)": 0.0,
+    "Earth Orbit Average": 1366 / 4,  # ~341.5 W/m² (solar constant / 4)
+    "Full Sun (sun-facing)": 1366.0,
+    "LEO Hot Case (albedo + Earth IR)": 800.0
+}
+
+# -------------------------- Demo --------------------------
+
+if __name__ == "__main__":
+    print("Radiative Cooling Simulator - Space Edition\n")
+    
+    for scenario_name, flux in SCENARIOS.items():
+        print(f"{scenario_name} (Solar Flux: {flux:.1f} W/m²)")
+        print("-" * 50)
+        for name, props in MATERIALS.items():
+            T_eq = equilibrium_temperature(
+                props["emissivity_ir"], props["absorptivity_solar"], flux
+            )
+            print(f"{name:30} → T_eq = {T_eq - 273.15:+6.1f} °C ({T_eq:.0f} K)")
+        print()
