@@ -2,13 +2,13 @@
 #
 #
 ### 
-# 
-# Computes net radiative power (using Stefan-Boltzmann's Law) 
-# Integrates Planck's Law of Spectral Radiance 
-# Includes functions for equilibrium temperature solving,
-# material presets of differing emissivity 
-# 
-###
+"""
+
+Radiative Cooling Simulator for Space Applications
+----------------------------------------
+Focused on vacuum conditions (orbital data centers, space applications).
+
+"""
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -20,9 +20,12 @@ if __name__ == "__main__":
 
 
     # Stefan-Boltzmann Constant
-    sigma = 5.670374419e-8  # W/m^2K^4
+    SIGMA = 5.670374419e-8  # W/m^2K^4
+    H = 6.62607015e-34  # Planck's constant in J·s
+    C = 3.0e8           # Speed of light in m/s
+    K = 1.380649e-23    # Boltzmann's constant in J/K
 
-    def emitted_power(emissivity, temperature):
+    def emitted_power(emissivity, T):
         """
         Radiated power from surface (graybody assumption).
         
@@ -33,7 +36,7 @@ if __name__ == "__main__":
         Returns:
         float: emitted power in W/m^2.
         """
-        return emissivity * sigma * temperature**4
+        return emissivity * SIGMA * T**4
 
     def planck_spectral_radiance(wavelength, T):
         """
@@ -64,16 +67,17 @@ if __name__ == "__main__":
         Calculate the equilibrium temperature of a material.
         
         Parameters:
-        emissivity (float): Emissivity of the material (0 to 1).
+        emissivity_ir (float): Emissivity of the material (0 to 1).
+        absorptivity_solar (float): Absorptivity of the material (0 to 1).
+        solar_flux (float): Incident solar power in W/m^2.
         ambient_temperature (float): Ambient temperature in Kelvin.
-        absorbed_power (float): Power absorbed by the material in W/m^2.
         
         Returns:
         float: Equilibrium temperature in Kelvin.
         """
         def balance(T):
             emitted = emitted_power(emissivity_ir, T)
-            absorbed_env = emissivity_ir * sigma * ambient_temp**4
+            absorbed_env = emissivity_ir * SIGMA * ambient_temp**4
             absorbed_solar = absorptivity_solar * solar_flux
             return emitted - (absorbed_solar + absorbed_env)
         
