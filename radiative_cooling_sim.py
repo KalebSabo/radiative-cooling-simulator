@@ -52,11 +52,7 @@ if __name__ == "__main__":
         Returns:
         float: Spectral radiance in W/m^2/sr/m.
         """
-        h = 6.62607015e-34  # Planck's constant in J·s
-        c = 3.0e8           # Speed of light in m/s
-        k = 1.380649e-23    # Boltzmann's constant in J/K
         
-
         # Prevent overflow
         exponent = (H * C) / (wavelength * K * T)
         if exponent > 700:  
