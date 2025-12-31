@@ -95,6 +95,9 @@ MATERIALS = {
 "White Paint (Z93-type)": {
     "emissivity_ir": 0.90, "absorptivity_solar": 0.18
 },
+"White Paint (AZ93-type)": {
+    "emissivity_ir": 0.88, "absorptivity_solar": 0.12
+},
 "Optical Solar Reflector (OSR)": {
     "emissivity_ir": 0.85, "absorptivity_solar": 0.10
 },
