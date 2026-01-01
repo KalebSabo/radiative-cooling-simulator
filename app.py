@@ -31,6 +31,8 @@ if mode == "Quick Scenario":
         options=list(MATERIALS.keys()),
         default=["White Paint (Z93-type)", "SpaceX Starship Tile (black coating)", "Ideal Radiator"]
     )
+    if selected_materials == []:
+        st.sidebar.warning("Please select at least one material to compare.")
 else:
     st.sidebar.subheader("Custom Material")
     emissivity_ir = st.sidebar.slider("IR Emissivity (how well it radiates heat)", 0.0, 1.0, 0.90, 0.01)
@@ -63,9 +65,9 @@ for i, mat_name in enumerate(selected_materials):
         st.metric(label=name_display, value=f"{T_celsius:+.1f} °C", delta=f"{T_eq:.0f} K")
 
         if ratio < 0.3:
-            st.success(f"Absorptivity/Emissivity ratio: {ratio:.2f} → Excellent cooling!")
+            st.success(f"Absorptivity/Emissivity ratio: {ratio:.2f}, Excellent cooling!")
         elif ratio > 0.7:
-            st.warning(f"Absorptivity/Emissivity ratio: {ratio:.2f} → Gets hot in sunlight")
+            st.warning(f"Absorptivity/Emissivity ratio: {ratio:.2f}, Gets hot in sunlight")
         else:
             st.info(f"Absorptivity/Emissivity ratio: {ratio:.2f}")
 
@@ -91,4 +93,4 @@ ax.legend()
 ax.grid(True, alpha=0.3)
 st.pyplot(fig)
 
-st.caption("Lower absorptivity/emissivity ratio → colder equilibrium in sunlight. White paints win for radiators!")
+st.caption("Lower absorptivity/emissivity ratio, colder equilibrium in sunlight. White paints win for radiators!")
