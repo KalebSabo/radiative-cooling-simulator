@@ -25,14 +25,25 @@ if mode == "Quick Scenario":
     scenario = st.sidebar.selectbox("Orbital Environment", options=list(SCENARIOS.keys()))
     solar_flux = SCENARIOS[scenario]
     st.sidebar.write(f"**Solar Input Power:** {solar_flux:.1f} W/m²")
-
+    '''
     selected_materials = st.sidebar.multiselect(
         "Compare Materials",
-        options=list(MATERIALS.keys()),
+        options=,
         default=["White Paint (Z93-type)", "SpaceX Starship Tile (black coating)", "Ideal Radiator"]
     )
     if selected_materials == []:
         st.sidebar.warning("Please select at least one material to compare.")
+    '''
+    selected_materials = st.sidebar.multiselect(
+        "Select materials to compare",
+        options=list(MATERIALS.keys()),
+        default=["White Paint (Z93-type)", "SpaceX Starship Tile (black coating)", "Ideal Radiator"]
+    )
+
+    if not selected_materials:
+        st.sidebar.warning("Please select at least one material to compare.")
+        st.stop()  # This halts execution — nothing below runs until a selection is made
+
 else:
     st.sidebar.subheader("Custom Material")
     emissivity_ir = st.sidebar.slider("IR Emissivity (how well it radiates heat)", 0.0, 1.0, 0.90, 0.01)
