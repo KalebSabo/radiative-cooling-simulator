@@ -70,7 +70,7 @@ for i, mat_name in enumerate(selected_materials):
         ratio = a_solar / e_ir if e_ir > 0 else 999
 
         st.metric(label=name_display, value=f"{T_celsius:+.1f} °C", delta=f"{T_eq:.0f} K")
-
+        
         if ratio < 0.3:
             st.success(f"Absorptivity/Emissivity ratio: {ratio:.2f}, Excellent cooling!")
         elif ratio > 0.7:
@@ -100,4 +100,3 @@ ax.legend()
 ax.grid(True, alpha=0.3)
 st.pyplot(fig)
 
-st.caption("Lower absorptivity/emissivity ratio, colder equilibrium in sunlight. White paints win for radiators!")
