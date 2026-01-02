@@ -32,6 +32,6 @@ Notes on equations and derivations in `notes/` folder.
 ```bash
 git clone https://github.com/KalebSabo/radiative-cooling-simulator.git
 cd radiative-cooling-simulator  
-pip install -r requirements.txt # (Coming Soon)
-python radiative_cooling_sim.py  # Run basic simulation (Coming Soon)
-streamlit run app.py  # Interactive dashboard (Coming Soon)
+pip install -r requirements.txt 
+python radiative_cooling_sim.py  # Run basic simulation
+streamlit run app.py  # Interactive dashboard
