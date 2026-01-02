@@ -50,7 +50,7 @@ else:
 # ---------------- Equilibrium Temperature Calculation --------------------------
 
 st.subheader("Equilibrium Temperatures")
-st.markdown('''### Assuming radiative cooling only (no conduction or convection in vacuum, 
+st.markdown('''#### Assuming radiative cooling only (no conduction or convection in vacuum, 
 the equilibrium temperature is where emitted thermal power balances absorbed solar and environmental radiation.
 ''')
 cols = st.columns(len(selected_materials))
@@ -99,8 +99,8 @@ for i, (name, res) in enumerate(results.items()):
 
     color = colors[i % len(colors)]
 
-    ax.plot(temps_c, power_emitted, label=f"{name} — Radiated Power", linewidth=2)
-    ax.axhline(power_absorbed, linestyle="--", alpha=0.8, label=f"{name} — Absorbed Power" if i == 0 else "")
+    ax.plot(temps_c, power_emitted, label=f"{name} — Radiated Power", linewidth=2, color=color)
+    ax.axhline(power_absorbed, linestyle="--", alpha=0.8, label=f"{name} — Absorbed Power" if i == 0 else "", color=color)
 
 ax.set_xlabel("Temperature (°C)")
 ax.set_ylabel("Power (W/m²)")
