@@ -61,7 +61,7 @@ area_m2 = (heat_load_mw * 1e6) / power_w_per_m2
 area_km2 = area_m2 / 1e6
 
 st.metric("Required Radiator Area", f"{area_km2:.2f} km² (one side)")
-st.info("For 5 GW heat (Starcloud/Aetherflux-scale), you'd need ~4-10 km² deployable radiators—matches 2025 proposals!")
+st.info("For 5 GW heat (Starcloud/Aetherflux-scale), you'd need ~4-10 km² deployable radiators")
 
 # -------------------------- Equilibrium Temperature Calculation --------------------------
 
