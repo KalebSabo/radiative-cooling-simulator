@@ -17,10 +17,12 @@ Explore how spacecraft and orbital data centers stay cool in vacuum using only r
 Inspired by SpaceX heat shields and future space computing.
 """)
 
-# Sidebar
+# -------------------------- Settings --------------------------
+
 st.sidebar.header("Settings")
 mode = st.sidebar.radio("Choose Mode", ["Quick Scenario", "Custom Settings"])
 
+# -------------------------- Quick Scenario --------------------------
 if mode == "Quick Scenario":
     scenario = st.sidebar.selectbox("Orbital Environment", options=list(SCENARIOS.keys()))
     solar_flux = SCENARIOS[scenario]
@@ -36,6 +38,7 @@ if mode == "Quick Scenario":
         st.sidebar.warning("Please select at least one material to compare.")
         st.stop()  # This halts execution — nothing below runs until a selection is made
 
+# -------------------------- Custom Material --------------------------
 else:
     st.sidebar.subheader("Custom Material")
     emissivity_ir = st.sidebar.slider("IR Emissivity (how well it radiates heat)", 0.0, 1.0, 0.90, 0.01)
@@ -44,24 +47,25 @@ else:
     selected_materials = ["Custom Material"]
 
     st.subheader("Radiator Sizing for Orbital Data Centers")
-    '''
-    Enter the expected heat load from servers and the desired radiator operating temperature to estimate the required radiator area.
-    '''
-    heat_load_mw = st.slider("Server Heat Load (MW)", 0.1, 5000.0, 100.0, 10.0)
-    radiator_temp = st.slider("Radiator Operating Temp (K)", 200, 400, 300)  # e.g., 27°C
-    emissivity_rad = st.slider("Radiator Emissivity", 0.8, 1.0, 0.9)
+    
+# -------------------------- Radiator Sizing --------------------------
+'''
+Enter the expected heat load from servers and the desired radiator operating temperature to estimate the required radiator area.
+'''
+heat_load_mw = st.slider("Server Heat Load (MW)", 0.1, 5000.0, 100.0, 10.0)
+radiator_temp = st.slider("Radiator Operating Temp (K)", 200, 400, 300)  # e.g., 27°C
+emissivity_rad = st.slider("Radiator Emissivity", 0.8, 1.0, 0.9)
 
-    power_w_per_m2 = emissivity_rad * STEFAN_BOLTZMANN_CONSTANT * radiator_temp**4
-    area_m2 = (heat_load_mw * 1e6) / power_w_per_m2
-    area_km2 = area_m2 / 1e6
+power_w_per_m2 = emissivity_rad * STEFAN_BOLTZMANN_CONSTANT * radiator_temp**4
+area_m2 = (heat_load_mw * 1e6) / power_w_per_m2
+area_km2 = area_m2 / 1e6
 
 st.metric("Required Radiator Area", f"{area_km2:.2f} km² (one side)")
 st.info("For 5 GW heat (Starcloud/Aetherflux-scale), you'd need ~4-10 km² deployable radiators—matches 2025 proposals!")
 
 # Display results
 st.subheader("Equilibrium Temperatures")
-st.markdown('''
-Assuming radiative cooling only (no conduction or convection in vacuum), 
+st.markdown('''###Assuming radiative cooling only (no conduction or convection in vacuum, 
 the equilibrium temperature is where emitted thermal power balances absorbed solar and environmental radiation.
 ''')
 cols = st.columns(len(selected_materials))
@@ -95,7 +99,8 @@ for i, mat_name in enumerate(selected_materials):
 
         results[mat_name] = {"T_eq": T_eq, "emissivity_ir": e_ir, "absorptivity_solar": a_solar}
 
-# Power balance plot
+# -------------------------- Power Balance Graph --------------------------
+
 st.markdown("### Power Balance Graph")
 fig, ax = plt.subplots(figsize=(10, 6))
 temps_k = np.linspace(150, 700, 500)
