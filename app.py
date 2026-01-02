@@ -20,10 +20,10 @@ Inspired by SpaceX heat shields and future space computing.
 # -------------------------- Settings --------------------------
 
 st.sidebar.header("Settings")
-mode = st.sidebar.radio("Choose Mode", ["Quick Scenario", "Custom Settings"])
+mode = st.sidebar.radio("Choose Mode", ["Material Comparison", "Custom Settings"])
 
-# -------------------------- Quick Scenario --------------------------
-if mode == "Quick Scenario":
+# -------------------------- Material Comparison --------------------------
+if mode == "Material Comparison":
     scenario = st.sidebar.selectbox("Orbital Environment", options=list(SCENARIOS.keys()))
     solar_flux = SCENARIOS[scenario]
     st.sidebar.write(f"**Solar Input Power:** {solar_flux:.1f} W/m²")
@@ -46,27 +46,11 @@ else:
     solar_flux = st.sidebar.slider("Solar Input Power (W/m²)", 0.0, 1400.0, 342.0, 10.0)
     selected_materials = ["Custom Material"]
 
-    st.subheader("Radiator Sizing for Orbital Data Centers")
     
-# -------------------------- Radiator Sizing --------------------------
-'''
-Enter the expected heat load from servers and the desired radiator operating temperature to estimate the required radiator area.
-'''
-heat_load_mw = st.slider("Server Heat Load (MW)", 0.1, 5000.0, 100.0, 10.0)
-radiator_temp = st.slider("Radiator Operating Temp (K)", 200, 400, 300)  # e.g., 27°C
-emissivity_rad = st.slider("Radiator Emissivity", 0.8, 1.0, 0.9)
-
-power_w_per_m2 = emissivity_rad * STEFAN_BOLTZMANN_CONSTANT * radiator_temp**4
-area_m2 = (heat_load_mw * 1e6) / power_w_per_m2
-area_km2 = area_m2 / 1e6
-
-st.metric("Required Radiator Area", f"{area_km2:.2f} km² (one side)")
-st.info("For 5 GW heat (Starcloud/Aetherflux-scale), you'd need ~4-10 km² deployable radiators")
-
-# -------------------------- Equilibrium Temperature Calculation --------------------------
+# ---------------- Equilibrium Temperature Calculation --------------------------
 
 st.subheader("Equilibrium Temperatures")
-st.markdown('''###Assuming radiative cooling only (no conduction or convection in vacuum, 
+st.markdown('''### Assuming radiative cooling only (no conduction or convection in vacuum, 
 the equilibrium temperature is where emitted thermal power balances absorbed solar and environmental radiation.
 ''')
 cols = st.columns(len(selected_materials))
@@ -119,5 +103,4 @@ ax.set_ylabel("Power (W/m²)")
 ax.set_title("Radiated vs Absorbed Power\n(Crossing point = equilibrium temperature)")
 ax.legend()
 ax.grid(True, alpha=0.3)
-st.pyplot(fig)
-
+st.pyplot(fig)        
