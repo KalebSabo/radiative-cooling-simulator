@@ -91,12 +91,16 @@ fig, ax = plt.subplots(figsize=(10, 6))
 temps_k = np.linspace(150, 700, 500)
 temps_c = temps_k - 273.15
 
-for name, res in results.items():
+colors = plt.cm.tab10.colors
+
+for i, (name, res) in enumerate(results.items()):
     power_emitted = emitted_power(res["emissivity_ir"], temps_k)
     power_absorbed = res["absorptivity_solar"] * solar_flux + res["emissivity_ir"] * STEFAN_BOLTZMANN_CONSTANT * 3**4
 
+    color = colors[i % len(colors)]
+
     ax.plot(temps_c, power_emitted, label=f"{name} — Radiated Power", linewidth=2)
-    ax.axhline(power_absorbed, linestyle="--", alpha=0.8, label=f"{name} — Absorbed Power" if name == list(results)[0] else "")
+    ax.axhline(power_absorbed, linestyle="--", alpha=0.8, label=f"{name} — Absorbed Power" if i == 0 else "")
 
 ax.set_xlabel("Temperature (°C)")
 ax.set_ylabel("Power (W/m²)")
