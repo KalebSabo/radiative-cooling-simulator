@@ -45,6 +45,10 @@ else:
 
 # Display results
 st.subheader("Equilibrium Temperatures")
+st.markdown('''
+Assuming radiative cooling only (no conduction or convection in vacuum), 
+the equilibrium temperature is where emitted thermal power balances absorbed solar and environmental radiation.
+''')
 cols = st.columns(len(selected_materials))
 results = {}
 

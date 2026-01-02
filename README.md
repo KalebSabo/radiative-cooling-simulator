@@ -8,11 +8,11 @@ This repository simulates radiative cooling mechanisms, drawing from SpaceX Star
 
 The simulator extends these concepts to emerging applications in **space-based data centers**, where radiative cooling in vacuum eliminates the need for fans, water, or active cooling systems. Orbital data centers can leverage unlimited solar power and radiate waste heat directly into space, potentially conserving water resources and enabling gigawatt-scale operations. Projects like Starcloud and Google's Project Suncatcher highlight this potential, using radiative emission for efficient thermal management at high temperatures (e.g., >80°C).
 
-Key simulations include (Coming Soon):
+Key simulations include:
 - Net radiative power in vacuum (Stefan-Boltzmann law).
 - Spectral emission in IR bands, inspired by heat shield coatings.
 - Equilibrium temperatures for orbital conditions (e.g., LEO vs. deep space).
-- Comparisons: Ideal blackbody vs. selective emitters for data center radiators.
+- Comparisons: Ideal blackbody vs. selective emitters for data center radiators. 
 
 This project demonstrates passive cooling advantages for sustainable computing in space, reducing Earth-bound energy and water demands.
 
