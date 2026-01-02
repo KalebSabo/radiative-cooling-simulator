@@ -63,7 +63,8 @@ area_km2 = area_m2 / 1e6
 st.metric("Required Radiator Area", f"{area_km2:.2f} km² (one side)")
 st.info("For 5 GW heat (Starcloud/Aetherflux-scale), you'd need ~4-10 km² deployable radiators—matches 2025 proposals!")
 
-# Display results
+# -------------------------- Equilibrium Temperature Calculation --------------------------
+
 st.subheader("Equilibrium Temperatures")
 st.markdown('''###Assuming radiative cooling only (no conduction or convection in vacuum, 
 the equilibrium temperature is where emitted thermal power balances absorbed solar and environmental radiation.
