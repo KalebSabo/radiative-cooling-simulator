@@ -1,2 +1,0 @@
-# Wein Displacement Law
-

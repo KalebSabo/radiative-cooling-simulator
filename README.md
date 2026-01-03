@@ -1,29 +1,23 @@
-# Radiative Cooling Simulator for Space Applications
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://radiative-cooling-simulator-kalebsabo.streamlit.app/)
 
-Python-based simulator exploring radiative cooling technologies inspired by SpaceX's reusable heat shielding. Focuses on modeling thermal protection systems (TPS) for high-heat environments, with potential applications in orbital data centers for passive heat dissipation in vacuum conditions. Uses NumPy/SciPy for net cooling power calculations, spectral emissivity modeling, and material comparisons. Includes plans for a Streamlit dashboard, theory notes, and visualizations.
+# Space Radiative Cooling Simulator 🌌
 
-## About
+A interactive web tool for simulating radiative cooling in space environments. Explore how objects reject heat via thermal radiation in vacuum—perfect for aerospace engineering, physics education, and satellite thermal management.
 
-This repository simulates radiative cooling mechanisms, drawing from SpaceX Starship's hexagonal ceramic tiles which feature a porous structure and black coating to efficiently radiate heat during atmospheric re-entry. These tiles represent advancements in reusable heat shielding, addressing challenges like durability and waterproofing seen in earlier systems like the Space Shuttle. Recent innovations include transpiration cooling ("sweating" shields) for enhanced reusability.
+## Demo / Live App
 
-The simulator extends these concepts to emerging applications in **space-based data centers**, where radiative cooling in vacuum eliminates the need for fans, water, or active cooling systems. Orbital data centers can leverage unlimited solar power and radiate waste heat directly into space, potentially conserving water resources and enabling gigawatt-scale operations. Projects like Starcloud and Google's Project Suncatcher highlight this potential, using radiative emission for efficient thermal management at high temperatures (e.g., >80°C).
+![SpaceRadiativeCoolingScreenshot](\Images\SpaceRadiativeCoolingSimPic.png)  
 
-Key simulations include:
-- Net radiative power in vacuum (Stefan-Boltzmann law).
-- Spectral emission in IR bands, inspired by heat shield coatings.
-- Equilibrium temperatures for orbital conditions (e.g., LEO vs. deep space).
-- Comparisons: Ideal blackbody vs. selective emitters for data center radiators. 
+[Try it live here!](https://radiative-cooling-simulator-kalebsabo.streamlit.app/)
 
-This project demonstrates passive cooling advantages for sustainable computing in space, reducing Earth-bound energy and water demands.
+## Features
 
-## Theory Background
-
-Radiative cooling follows Planck's law for spectral radiance and the Stefan-Boltzmann law for total power: \( P = $\epsilon \sigma$ T^4 \), where \($\epsilon$\) is emissivity, \($\sigma$\) is the constant, and \(T\) is temperature. 
-
-In space:
-- No convection/conduction; heat rejection is purely radiative.
-- Background ~3K (negligible absorption).
-- For data centers: Model server heat loads (~kW/m²) radiated via panels inspired by Starship tiles.
+- Features templates for different solar events and material/paint
+- In Custom Mode, Adjust parameters like emissivity, absorptivity and solar flux
+- Adjustable plots of cooling curves and equilibrium temperatures
+- Based on Stefan-Boltzmann's and Planck's laws of blackbody radiation. 
+- Educational explanations and tooltips
 
 Notes on equations and derivations in `notes/` folder.
 
