@@ -7,7 +7,7 @@ A interactive web tool for simulating radiative cooling in space environments. E
 
 ## Demo / Live App
 
-![SpaceRadiativeCoolingScreenshot](\Images\SpaceRadiativeCoolingSimPic.png)  
+![SpaceRadiativeCoolingScreenshot](Images\SpaceRadiativeCoolingSimPic.png)  
 
 [Try it live here!](https://radiative-cooling-simulator-kalebsabo.streamlit.app/)
 
