@@ -19,6 +19,11 @@ A interactive web tool for simulating radiative cooling in space environments. E
 
 Notes on equations and derivations in `notes/` folder.
 
+- [Planck's Law](Notes/01_Plancks_Law.md)
+- [Stefan-Boltzmann Law](Notes/02_Stefon_Boltzmann_Law.md)
+
+![Planck's Law Graph](Images/planck_radiation.png)
+
 ## Installation
 
 ```bash
