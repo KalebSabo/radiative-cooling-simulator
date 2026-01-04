@@ -14,7 +14,7 @@ A interactive web tool for simulating radiative cooling in space environments. E
 ## Features
 
 - Features templates for different solar events and material/paint
-- In Custom Mode, Adjust parameters like emissivity, absorptivity and solar flux
+- In Custom Mode, Adjust parameters manually like emissivity, absorptivity and solar flux
 - Adjustable plots of cooling curves and equilibrium temperatures
 - Based on Stefan-Boltzmann's and Planck's laws of blackbody radiation. 
 - Educational explanations and tooltips
