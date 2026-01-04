@@ -1,9 +1,17 @@
+'''
 # app.py
+Space Radiative Cooling Simulator
+----------------------------------------
+By: Kaleb Sabo
+Inspired by SpaceX heat shields and future space computing
+
+''' 
+
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 from radiative_cooling_sim import (
-    equilibrium_temperature,
+    equilibrium_temperature, 
     emitted_power,
     MATERIALS,
     SCENARIOS,
@@ -50,7 +58,7 @@ else:
 # ---------------- Equilibrium Temperature Calculation --------------------------
 
 st.subheader("Equilibrium Temperatures")
-st.markdown('''#### Assuming radiative cooling only (no conduction or convection in vacuum, 
+st.markdown('''##### Assuming radiative cooling only (no conduction or convection in vacuum, 
 the equilibrium temperature is where emitted thermal power balances absorbed solar and environmental radiation.
 ''')
 cols = st.columns(len(selected_materials))
