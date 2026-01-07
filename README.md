@@ -3,7 +3,7 @@
 
 # Space Radiative Cooling Simulator 🌌
 
-A interactive web tool for simulating radiative cooling in space environments. Explore how objects reject heat via thermal radiation in vacuum—perfect for aerospace engineering, physics education, and satellite thermal management.
+A interactive web tool for simulating radiative cooling in space environments. Explore how objects reject heat via thermal radiation in vacuum.
 
 ## Demo / Live App
 
