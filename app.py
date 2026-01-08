@@ -1,9 +1,10 @@
 '''
-# app.py
-Space Radiative Cooling Simulator
+
+Space Radiation Simulator
 ----------------------------------------
-By: Kaleb Sabo
 Inspired by SpaceX heat shields and future space computing
+
+By: Kaleb Sabo
 
 ''' 
 
@@ -28,7 +29,7 @@ Inspired by SpaceX heat shields and future space computing.
 # -------------------------- Settings --------------------------
 
 st.sidebar.header("Settings")
-mode = st.sidebar.radio("Choose Mode", ["Material Comparison", "Custom Settings"])
+mode = st.sidebar.radio("Choose Mode", ["Material Comparison", "Space Weather", "Custom Settings"])
 
 # -------------------------- Material Comparison --------------------------
 if mode == "Material Comparison":
@@ -46,6 +47,23 @@ if mode == "Material Comparison":
         st.sidebar.warning("Please select at least one material to compare.")
         st.stop()  # This halts execution — nothing below runs until a selection is made
 
+# -------------------------- Space Weather --------------------------
+elif mode == "Space Weather":
+    st.sidebar.subheader("Space Weather Scenarios")
+    scenario = st.sidebar.selectbox("Select Space Weather Scenario", options=list(SCENARIOS.keys()))
+    solar_flux = SCENARIOS[scenario]
+    st.sidebar.write(f"**Solar Input Power:** {solar_flux:.1f} W/m²")
+
+    selected_materials = st.sidebar.multiselect(
+        "Select materials to analyze",
+        options=list(MATERIALS.keys()),
+        default=["White Paint (Z93-type)", "SpaceX Starship Tile (black coating)", "Ideal Radiator"]
+    )
+
+    if not selected_materials:
+        st.sidebar.warning("Please select at least one material to analyze.")
+        st.stop()  # This halts execution — nothing below runs until a selection is made
+        
 # -------------------------- Custom Material --------------------------
 else:
     st.sidebar.subheader("Custom Material")
@@ -54,11 +72,13 @@ else:
     solar_flux = st.sidebar.slider("Solar Input Power (W/m²)", 0.0, 1400.0, 342.0, 10.0)
     selected_materials = ["Custom Material"]
 
-    
+
+
+
 # ---------------- Equilibrium Temperature Calculation --------------------------
 
 st.subheader("Equilibrium Temperatures")
-st.markdown('''##### Assuming radiative cooling only (no conduction or convection in vacuum, 
+st.markdown('''##### Assuming radiative cooling only (no conduction or convection in vacuum) 
 the equilibrium temperature is where emitted thermal power balances absorbed solar and environmental radiation.
 ''')
 cols = st.columns(len(selected_materials))

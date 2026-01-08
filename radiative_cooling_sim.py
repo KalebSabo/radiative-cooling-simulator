@@ -1,20 +1,15 @@
-# Radiative Cooling Simulation
-#
-#
-### 
 """
 
 Radiative Cooling Simulator for Space Applications
 ----------------------------------------
 Focused on vacuum conditions (orbital data centers, space applications).
 
+By: Kaleb Sabo
+
 """
 
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.optimize import fsolve
-from scipy.integrate import quad
-
 
 print("Radiative Cooling Simulator Module Loaded")
 
