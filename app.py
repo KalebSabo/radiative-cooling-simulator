@@ -35,13 +35,14 @@ Inspired by SpaceX heat shields and future space computing.
 # -------------------------- Settings --------------------------
 
 st.sidebar.header("Settings")
-mode = st.sidebar.radio("Choose Mode", ["Material Comparison", "Space Weather", "Custom Settings"])
+mode = st.sidebar.radio("Choose Mode", ["Orbital Environment", "Space Weather", "Custom Settings"])
 
 # Move material selection here so it's available in all modes where needed
 selected_materials = None
 
-if mode == "Material Comparison":
-    scenario = st.sidebar.selectbox("Orbital Environment", options=list(ORBIT_SCENARIOS.keys()))
+if mode == "Orbital Environment":
+    st.sidebar.subheader("Orbital Environment Scenarios", divider=True)
+    scenario = st.sidebar.selectbox("Select Orbital Environment", options=list(ORBIT_SCENARIOS.keys()))
     solar_flux = ORBIT_SCENARIOS[scenario]
     st.sidebar.write(f"**Solar Input Power:** {solar_flux:.1f} W/m²")
 
@@ -56,7 +57,7 @@ if mode == "Material Comparison":
         st.stop()
 
 elif mode == "Space Weather":
-    st.sidebar.subheader("Space Weather Scenarios")
+    st.sidebar.subheader("Space Weather Scenarios", divider=True)
     scenario = st.sidebar.selectbox("Select Space Weather Scenario", options=list(WEATHER_SCENARIOS.keys()))
     solar_flux = WEATHER_SCENARIOS[scenario]
     st.sidebar.write(f"**Solar Input Power:** {solar_flux:.1f} W/m²")
