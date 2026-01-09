@@ -58,7 +58,7 @@ if mode == "Orbital Environment":
 
 elif mode == "Space Weather":
     st.sidebar.subheader("Space Weather Scenarios", divider=True)
-    scenario = st.sidebar.selectbox("Select Space Weather Scenario", options=list(WEATHER_SCENARIOS.keys()))
+    scenario = st.sidebar.selectbox("Select Space Weather Solar Weather Conditions", options=list(WEATHER_SCENARIOS.keys()))
     solar_flux = WEATHER_SCENARIOS[scenario]
     st.sidebar.write(f"**Solar Input Power:** {solar_flux:.1f} W/m²")
 

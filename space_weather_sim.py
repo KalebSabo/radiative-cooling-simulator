@@ -11,8 +11,8 @@ By: Kaleb Sabo
 # -------------------------- Example Scenarios --------------------------
 
 WEATHER_SCENARIOS = {
-    'Calm Solar Conditions': 1361,  # W/m²
-    'Moderate Solar Storm': 1500,    # W/m²
-    'Severe Solar Storm': 1800       # W/m²
+    'Calm': 1361,  # W/m²
+    'Moderate': 1500,    # W/m²
+    'Severe': 1800       # W/m²
 
 }
