@@ -15,9 +15,15 @@ from radiative_cooling_sim import (
     equilibrium_temperature, 
     emitted_power,
     MATERIALS,
-    SCENARIOS,
+    ORBIT_SCENARIOS,
     K as STEFAN_BOLTZMANN_CONSTANT
 )
+from space_weather_sim import (
+    WEATHER_SCENARIOS,
+)
+
+
+# -------------------------- Streamlit App --------------------------
 
 st.set_page_config(page_title="Space Radiative Cooling Simulator", layout="wide")
 st.title("Space Radiative Cooling Simulator")
@@ -31,12 +37,7 @@ Inspired by SpaceX heat shields and future space computing.
 st.sidebar.header("Settings")
 mode = st.sidebar.radio("Choose Mode", ["Material Comparison", "Space Weather", "Custom Settings"])
 
-# -------------------------- Material Comparison --------------------------
-if mode == "Material Comparison":
-    scenario = st.sidebar.selectbox("Orbital Environment", options=list(SCENARIOS.keys()))
-    solar_flux = SCENARIOS[scenario]
-    st.sidebar.write(f"**Solar Input Power:** {solar_flux:.1f} W/m²")
-
+def show_material_options():
     selected_materials = st.sidebar.multiselect(
         "Select materials to compare",
         options=list(MATERIALS.keys()),
@@ -45,24 +46,25 @@ if mode == "Material Comparison":
 
     if not selected_materials:
         st.sidebar.warning("Please select at least one material to compare.")
-        st.stop()  # This halts execution — nothing below runs until a selection is made
+        st.stop()  # This halts execution if no materials are selected
+
+# -------------------------- Material Comparison --------------------------
+if mode == "Material Comparison":
+    scenario = st.sidebar.selectbox("Orbital Environment", options=list(ORBIT_SCENARIOS.keys()))
+    solar_flux = ORBIT_SCENARIOS[scenario]
+    st.sidebar.write(f"**Solar Input Power:** {solar_flux:.1f} W/m²")
+
+    show_material_options()
+    
 
 # -------------------------- Space Weather --------------------------
 elif mode == "Space Weather":
     st.sidebar.subheader("Space Weather Scenarios")
-    scenario = st.sidebar.selectbox("Select Space Weather Scenario", options=list(SCENARIOS.keys()))
-    solar_flux = SCENARIOS[scenario]
+    scenario = st.sidebar.selectbox("Select Space Weather Scenario", options=list(WEATHER_SCENARIOS.keys()))
+    solar_flux = WEATHER_SCENARIOS[scenario]
     st.sidebar.write(f"**Solar Input Power:** {solar_flux:.1f} W/m²")
 
-    selected_materials = st.sidebar.multiselect(
-        "Select materials to analyze",
-        options=list(MATERIALS.keys()),
-        default=["White Paint (Z93-type)", "SpaceX Starship Tile (black coating)", "Ideal Radiator"]
-    )
-
-    if not selected_materials:
-        st.sidebar.warning("Please select at least one material to analyze.")
-        st.stop()  # This halts execution — nothing below runs until a selection is made
+    show_material_options()
         
 # -------------------------- Custom Material --------------------------
 else:

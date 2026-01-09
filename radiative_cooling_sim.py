@@ -107,9 +107,9 @@ MATERIALS = {
 }
 }
 
-# -------------------------- Example Scenarios --------------------------
+# -------------------------- Example Orbit Scenarios --------------------------
 
-SCENARIOS = {
+ORBIT_SCENARIOS = {
 "Deep Space (no sun)": 0.0,
 "Earth Orbit Average": 1366 / 4,  # ~341.5 W/m² (solar constant / 4)
 "Full Sun (sun-facing)": 1366.0,
@@ -121,7 +121,7 @@ SCENARIOS = {
 if __name__ == "__main__":
     print("Radiative Cooling Simulator - Space Edition\n")
     
-    for scenario_name, flux in SCENARIOS.items():
+    for scenario_name, flux in ORBIT_SCENARIOS.items():
         print(f"{scenario_name} (Solar Flux: {flux:.1f} W/m²)")
         print("-" * 50)
         for name, props in MATERIALS.items():
