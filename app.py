@@ -37,7 +37,14 @@ Inspired by SpaceX heat shields and future space computing.
 st.sidebar.header("Settings")
 mode = st.sidebar.radio("Choose Mode", ["Material Comparison", "Space Weather", "Custom Settings"])
 
-def show_material_options():
+# Move material selection here so it's available in all modes where needed
+selected_materials = None
+
+if mode == "Material Comparison":
+    scenario = st.sidebar.selectbox("Orbital Environment", options=list(ORBIT_SCENARIOS.keys()))
+    solar_flux = ORBIT_SCENARIOS[scenario]
+    st.sidebar.write(f"**Solar Input Power:** {solar_flux:.1f} W/m²")
+
     selected_materials = st.sidebar.multiselect(
         "Select materials to compare",
         options=list(MATERIALS.keys()),
@@ -46,35 +53,30 @@ def show_material_options():
 
     if not selected_materials:
         st.sidebar.warning("Please select at least one material to compare.")
-        st.stop()  # This halts execution if no materials are selected
+        st.stop()
 
-# -------------------------- Material Comparison --------------------------
-if mode == "Material Comparison":
-    scenario = st.sidebar.selectbox("Orbital Environment", options=list(ORBIT_SCENARIOS.keys()))
-    solar_flux = ORBIT_SCENARIOS[scenario]
-    st.sidebar.write(f"**Solar Input Power:** {solar_flux:.1f} W/m²")
-
-    show_material_options()
-    
-
-# -------------------------- Space Weather --------------------------
 elif mode == "Space Weather":
     st.sidebar.subheader("Space Weather Scenarios")
     scenario = st.sidebar.selectbox("Select Space Weather Scenario", options=list(WEATHER_SCENARIOS.keys()))
     solar_flux = WEATHER_SCENARIOS[scenario]
     st.sidebar.write(f"**Solar Input Power:** {solar_flux:.1f} W/m²")
 
-    show_material_options()
+    selected_materials = st.sidebar.multiselect(
+        "Select materials to compare",
+        options=list(MATERIALS.keys()),
+        default=["White Paint (Z93-type)", "SpaceX Starship Tile (black coating)", "Ideal Radiator"]
+    )
+
+    if not selected_materials:
+        st.sidebar.warning("Please select at least one material to compare.")
+        st.stop()
         
-# -------------------------- Custom Material --------------------------
-else:
+else:  # Custom Settings
     st.sidebar.subheader("Custom Material")
     emissivity_ir = st.sidebar.slider("IR Emissivity (how well it radiates heat)", 0.0, 1.0, 0.90, 0.01)
     absorptivity_solar = st.sidebar.slider("Solar Absorptivity (how much sunlight it absorbs)", 0.0, 1.0, 0.20, 0.01)
     solar_flux = st.sidebar.slider("Solar Input Power (W/m²)", 0.0, 1400.0, 342.0, 10.0)
-    selected_materials = ["Custom Material"]
-
-
+    selected_materials = ["Custom Material"]  # This is now always set
 
 
 # ---------------- Equilibrium Temperature Calculation --------------------------
@@ -83,6 +85,7 @@ st.subheader("Equilibrium Temperatures")
 st.markdown('''##### Assuming radiative cooling only (no conduction or convection in vacuum) 
 the equilibrium temperature is where emitted thermal power balances absorbed solar and environmental radiation.
 ''')
+
 cols = st.columns(len(selected_materials))
 results = {}
 
