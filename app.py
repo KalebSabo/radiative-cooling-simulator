@@ -139,35 +139,58 @@ for i, mat_name in enumerate(selected_materials):
 # -------------------------- Power Balance Graph --------------------------
 
 st.markdown("### Power Balance Graph")
-fig, ax = plt.subplots(figsize=(10, 6))
-temps_k = np.linspace(150, 700, 500)
+
+fig, ax = plt.subplots(figsize=(12, 7))  # Slightly larger for clarity
+temps_k = np.linspace(100, 800, 800)     # Wider temp range for better visibility
 temps_c = temps_k - 273.15
 
 colors = plt.cm.tab10.colors
 
+# First pass: collect all absorbed powers to compute average
+absorbed_powers = []
+for name, res in results.items():
+    p_abs = res["absorptivity"] * solar_flux + res["emissivity"] * STEFAN_BOLTZMANN_CONSTANT * 3**4
+    absorbed_powers.append(p_abs)
+    
+    if simulate_degradation:
+        p_abs_deg = res["absorptivity_deg"] * solar_flux + res["emissivity_deg"] * STEFAN_BOLTZMANN_CONSTANT * 3**4
+        absorbed_powers.append(p_abs_deg)
+
+if absorbed_powers:
+    avg_absorbed = np.mean(absorbed_powers)
+    y_margin = max(150, (max(absorbed_powers) - min(absorbed_powers)) * 0.6)  # Adaptive margin
+    y_min = max(0, avg_absorbed - y_margin)
+    y_max = avg_absorbed + y_margin
+else:
+    y_min, y_max = 0, 1000  # fallback
+
+# Second pass: plot
 for i, (name, res) in enumerate(results.items()):
     color = colors[i % len(colors)]
 
-    # Fresh - solid lines
+    # Fresh
     p_emitted = emitted_power(res["emissivity"], temps_k)
     p_absorbed = res["absorptivity"] * solar_flux + res["emissivity"] * STEFAN_BOLTZMANN_CONSTANT * 3**4
-    ax.plot(temps_c, p_emitted, label=f"{name} - Fresh (Radiated)", color=color, linewidth=2)
-    ax.axhline(p_absorbed, color=color, linestyle="--", alpha=0.7, label=f"{name} - Fresh (Absorbed)")
+    
+    ax.plot(temps_c, p_emitted, label=f"{name} – Fresh Radiated", color=color, linewidth=2.2)
+    ax.axhline(p_absorbed, color=color, linestyle="--", alpha=0.8, label=f"{name} – Fresh Absorbed")
 
-    # Degraded - dashed/dotted lines (only if enabled)
+    # Degraded (if enabled)
     if simulate_degradation:
         p_emitted_deg = emitted_power(res["emissivity_deg"], temps_k)
         p_absorbed_deg = res["absorptivity_deg"] * solar_flux + res["emissivity_deg"] * STEFAN_BOLTZMANN_CONSTANT * 3**4
         
-        ax.plot(temps_c, p_emitted_deg, label=f"{name} - Degraded (Radiated)", color=color, linestyle=":", linewidth=2)
-        ax.axhline(p_absorbed_deg, color=color, linestyle="-.", alpha=0.5, label=f"{name} - Degraded (Absorbed)")
+        ax.plot(temps_c, p_emitted_deg, label=f"{name} – Degraded Radiated", color=color, linestyle=":", linewidth=2)
+        ax.axhline(p_absorbed_deg, color=color, linestyle="-.", alpha=0.6, label=f"{name} – Degraded Absorbed")
 
-ax.set_xlabel("Temperature (°C)")
-ax.set_ylabel("Power (W/m²)")
-ax.set_title("Radiated vs Absorbed Power (Fresh vs Degraded)")
+ax.set_xlabel("Temperature (°C)", fontsize=11)
+ax.set_ylabel("Power (W/m²)", fontsize=11)
+ax.set_title("Radiated vs Absorbed Power\n(Fresh vs Degraded – Zoomed on Intersection Region)", fontsize=13)
+
+ax.set_ylim(y_min, y_max)  
+
 ax.legend(loc="upper left", bbox_to_anchor=(1.02, 1), borderaxespad=0., fontsize=9)
-ax.grid(True, alpha=0.3)
+ax.grid(True, alpha=0.3, linestyle='--')
 
-# Make legend scrollable if too many items
 plt.tight_layout()
 st.pyplot(fig)
