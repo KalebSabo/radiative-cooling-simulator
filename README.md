@@ -28,14 +28,7 @@ Notes on equations and derivations in `notes/` folder.
 
 ## References & Resources
 
-- Sheldahl Thermal Control Materials Catalog ("Red Book"), latest available edition.  
-  Available at: [https://www.sheldahl.com/sites/default/files/2020-02/RedBook.pdf](https://www.sheldahl.com/sites/default/files/2020-02/RedBook.pdf) (or the most recent version from Sheldahl's website).
-
-- Gilmore, D. G. (Ed.). (2002). *Spacecraft Thermal Control Handbook, Volume I: Fundamental Technologies* (2nd ed.). The Aerospace Press / El Segundo, CA: The Aerospace Corporation.
-  
-- National Aeronautics and Space Administration. (2023). [*NASA Passive Thermal Control Engineering Guidebook*](https://ntrs.nasa.gov/api/citations/20230013900/downloads/NASA%20Thermal%20Control%20Engineering%20Guidebook%20v4.pdf) (Revision 4.0). NASA Langley Research Center.  
-
-- Material properties (e.g., Z93 paint, OSRs) adapted from NASA and industry standards referenced in the above sources.
+- [Link to REFERENCES file](References.md)
 
 Special thanks to open NASA resources and the aerospace thermal control community for making this knowledge accessible.
 

@@ -107,6 +107,43 @@ MATERIALS = {
 }
 }
 
+# -------------------------- Material Degradation Rates --------------------------
+
+# Degradation rates per year in typical space environment (LEO/GEO average)
+# Δα_s = change in solar absorptivity (usually increases = darkening)
+# Δε   = change in thermal emissivity (usually decreases slightly)
+
+MATERIAL_DEGRADATION_RATES = {
+    "SpaceX Starship Tile (black coating)": {
+        "delta_alpha_per_year": 0.005,    # Very stable black ceramic
+        "delta_epsilon_per_year": -0.002  # Slight emissivity drop
+    },
+    "White Paint (Z93-type)": {
+        "delta_alpha_per_year": 0.015,    # Classic Z-93 degrades noticeably
+        "delta_epsilon_per_year": -0.005  # Minor emissivity loss
+    },
+    "White Paint (AZ93-type)": {
+        "delta_alpha_per_year": 0.008,    # Improved version, slower degradation
+        "delta_epsilon_per_year": -0.003
+    },
+    "Optical Solar Reflector (OSR)": {
+        "delta_alpha_per_year": 0.003,    # Extremely stable (quartz/silver)
+        "delta_epsilon_per_year": -0.001  # Almost no change
+    },
+    "Polished Aluminum": {
+        "delta_alpha_per_year": 0.010,    # Surface oxidation/roughening
+        "delta_epsilon_per_year": -0.010  # Emissivity drops as oxide forms
+    },
+    "Ideal Radiator": {
+        "delta_alpha_per_year": 0.000,
+        "delta_epsilon_per_year": 0.000   # Theoretical perfect - no degradation
+    },
+    "Black Paint": {
+        "delta_alpha_per_year": 0.002,    # Already near maximum absorptivity
+        "delta_epsilon_per_year": -0.008  # Slight emissivity loss from erosion
+    }
+}
+
 # -------------------------- Example Orbit Scenarios --------------------------
 
 ORBIT_SCENARIOS = {
