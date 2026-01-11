@@ -32,7 +32,11 @@ Inspired by SpaceX heat shields and future space computing.
 
 st.sidebar.header("Settings")
 mode = st.sidebar.radio("Choose Mode", ["Orbital Environment", "Custom Settings"])
-
+graph_view = st.sidebar.checkbox(
+    "Zoom on Intersections",
+    value=True,
+    help="Centers the graph on equilibrium crossing points for easier comparison"
+)
 simulate_degradation = st.sidebar.checkbox(
     "Simulate Degradation Over Time",
     value=False,
@@ -140,13 +144,13 @@ for i, mat_name in enumerate(selected_materials):
 
 st.markdown("### Power Balance Graph")
 
-fig, ax = plt.subplots(figsize=(12, 7))  # Slightly larger for clarity
-temps_k = np.linspace(100, 800, 800)     # Wider temp range for better visibility
+fig, ax = plt.subplots(figsize=(12, 7))
+temps_k = np.linspace(100, 800, 800)  # Wide range for visibility
 temps_c = temps_k - 273.15
 
 colors = plt.cm.tab10.colors
 
-# First pass: collect all absorbed powers to compute average
+# Collect all absorbed powers to compute stats (for zoom)
 absorbed_powers = []
 for name, res in results.items():
     p_abs = res["absorptivity"] * solar_flux + res["emissivity"] * STEFAN_BOLTZMANN_CONSTANT * 3**4
@@ -156,38 +160,38 @@ for name, res in results.items():
         p_abs_deg = res["absorptivity_deg"] * solar_flux + res["emissivity_deg"] * STEFAN_BOLTZMANN_CONSTANT * 3**4
         absorbed_powers.append(p_abs_deg)
 
-if absorbed_powers:
+# Set y-limits based on toggle
+if graph_view and absorbed_powers:  # Zoom mode
     avg_absorbed = np.mean(absorbed_powers)
-    y_margin = max(150, (max(absorbed_powers) - min(absorbed_powers)) * 0.6)  # Adaptive margin
+    y_range = max(absorbed_powers) - min(absorbed_powers)
+    y_margin = max(150, y_range * 0.6)  # Adaptive, at least 150 W/m² padding
     y_min = max(0, avg_absorbed - y_margin)
     y_max = avg_absorbed + y_margin
-else:
-    y_min, y_max = 0, 1000  # fallback
+else:  # Full view
+    y_min = 0
+    y_max = None  # Let matplotlib auto-scale (or set a high value if needed)
 
-# Second pass: plot
+# Plot loop
 for i, (name, res) in enumerate(results.items()):
     color = colors[i % len(colors)]
 
     # Fresh
     p_emitted = emitted_power(res["emissivity"], temps_k)
     p_absorbed = res["absorptivity"] * solar_flux + res["emissivity"] * STEFAN_BOLTZMANN_CONSTANT * 3**4
-    
     ax.plot(temps_c, p_emitted, label=f"{name} – Fresh Radiated", color=color, linewidth=2.2)
     ax.axhline(p_absorbed, color=color, linestyle="--", alpha=0.8, label=f"{name} – Fresh Absorbed")
 
-    # Degraded (if enabled)
+    # Degraded
     if simulate_degradation:
         p_emitted_deg = emitted_power(res["emissivity_deg"], temps_k)
         p_absorbed_deg = res["absorptivity_deg"] * solar_flux + res["emissivity_deg"] * STEFAN_BOLTZMANN_CONSTANT * 3**4
-        
         ax.plot(temps_c, p_emitted_deg, label=f"{name} – Degraded Radiated", color=color, linestyle=":", linewidth=2)
         ax.axhline(p_absorbed_deg, color=color, linestyle="-.", alpha=0.6, label=f"{name} – Degraded Absorbed")
 
 ax.set_xlabel("Temperature (°C)", fontsize=11)
 ax.set_ylabel("Power (W/m²)", fontsize=11)
-ax.set_title("Radiated vs Absorbed Power\n(Fresh vs Degraded – Zoomed on Intersection Region)", fontsize=13)
-
-ax.set_ylim(y_min, y_max)  
+ax.set_title("Radiated vs Absorbed Power (Fresh vs Degraded)")
+ax.set_ylim(y_min, y_max)  # Apply zoom or full view
 
 ax.legend(loc="upper left", bbox_to_anchor=(1.02, 1), borderaxespad=0., fontsize=9)
 ax.grid(True, alpha=0.3, linestyle='--')
