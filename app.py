@@ -67,7 +67,7 @@ if mode == "Orbital Environment" or mode == "Custom Settings":
 
     st.subheader("Equilibrium Temperatures")
     st.markdown('''##### Assuming radiative cooling only (no conduction or convection in vacuum) 
-    the equilibrium temperature is where emitted thermal power balances absorbed solar and environmental radiation.
+                the equilibrium temperature is where emitted thermal power balances absorbed solar and environmental radiation.
     ''')
     # ---------------- Equilibrium Temperature Calculation --------------------------
 
