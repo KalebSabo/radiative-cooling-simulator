@@ -71,15 +71,46 @@ def equilibrium_temperature(emissivity_ir, absorptivity_solar, solar_flux, ambie
     Returns:
     float: Equilibrium temperature in Kelvin.
     """
+
     def balance(T):
         emitted = emitted_power(emissivity_ir, T)
         absorbed_env = emissivity_ir * SIGMA * ambient_temp**4
         absorbed_solar = absorptivity_solar * solar_flux
         return emitted - (absorbed_solar + absorbed_env)
     
-    
+        
     T_eq = 300.0 # Initial guess for temperature in Kelvin        
     return fsolve(balance, T_eq)[0]
+
+
+def get_degraded_properties(material_name, years):
+    """
+    Calculate the degradation of absorptivity/emissivity of a material per year.
+    
+    Parameters:
+    material_name (string): Name of the material.
+    years (float): Number of years in space environment.
+    
+    Returns:
+    tuple: Degraded emissivity_ir and absorptivity_solars.
+    """
+    if material_name not in MATERIALS:
+        base_alpha, base_epsilon = 0.20, 0.90  # fallback
+    else:
+        base_alpha = MATERIALS[material_name]["absorptivity_solar"]
+        base_epsilon = MATERIALS[material_name]["emissivity_ir"]
+    
+    rates = MATERIAL_DEGRADATION_RATES.get(
+        material_name,
+        {"delta_absorptivity_per_year": 0.010, "delta_emissivity_per_year": -0.005}
+    )
+    
+    degraded_alpha = min(1.0, base_alpha + rates["delta_absorptivity_per_year"] * years)
+    degraded_epsilon = max(0.10, base_epsilon + rates["delta_emissivity_per_year"] * years)
+    
+    return degraded_epsilon, degraded_alpha
+
+
 
 # -------------------------- Material Presets --------------------------
 
