@@ -161,7 +161,7 @@ the equilibrium temperature is where emitted thermal power balances absorbed sol
         
         color = colors[i % len(colors)]
         ax.plot(temps_c, p_emitted, label=f"{name} Fresh", color=color, linewidth=2)
-        ax.axhline(p_absorbed, color=color, linestyle="--", absorptivity=0.7)
+        ax.axhline(p_absorbed, color=color, linestyle="--", alpha=0.7)
         
         # Degraded (dashed)
         if simulate_degradation:
