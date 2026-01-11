@@ -116,6 +116,19 @@ ORBIT_SCENARIOS = {
 "LEO Hot Case (albedo + Earth IR)": 800.0
 }
 
+# -------------------------- Material Degradation Rates --------------------------
+
+DEGREDATION_RATES = {
+"SpaceX Starship Tile (black coating)": 0.01,  # per year
+"White Paint (Z93-type)": 0.005,
+"White Paint (AZ93-type)": 0.005,
+"Optical Solar Reflector (OSR)": 0.002,
+"Polished Aluminum": 0.003,
+"Ideal Radiator": 0.0,
+"Black Paint": 0.01
+}
+
+
 # -------------------------- Demo --------------------------
 
 if __name__ == "__main__":
