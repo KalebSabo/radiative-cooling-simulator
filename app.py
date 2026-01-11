@@ -169,12 +169,12 @@ the equilibrium temperature is where emitted thermal power balances absorbed sol
             p_absorbed_deg = res["absorptivity_deg"] * solar_flux + res["emissivity_deg"] * STEFAN_BOLTZMANN_CONSTANT * 3**4
             
             ax.plot(temps_c, p_emitted_deg, label=f"{name} Degraded", color=color, linestyle=":", linewidth=2)
-            ax.axhline(p_absorbed_deg, color=color, linestyle="-.", absorptivity=0.5)
+            ax.axhline(p_absorbed_deg, color=color, linestyle="-.", alpha=0.5)
 
     ax.set_xlabel("Temperature (°C)")
     ax.set_ylabel("Power (W/m²)")
     ax.set_title("Radiated vs Absorbed Power (Fresh vs Degraded)")
     ax.legend()
-    ax.grid(True, absorptivity=0.3)
+    ax.grid(True, alpha=0.3)
     st.pyplot(fig)
         
