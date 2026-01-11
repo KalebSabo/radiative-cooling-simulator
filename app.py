@@ -148,22 +148,26 @@ colors = plt.cm.tab10.colors
 for i, (name, res) in enumerate(results.items()):
     color = colors[i % len(colors)]
 
-    # Fresh
+    # Fresh - solid lines
     p_emitted = emitted_power(res["emissivity"], temps_k)
     p_absorbed = res["absorptivity"] * solar_flux + res["emissivity"] * STEFAN_BOLTZMANN_CONSTANT * 3**4
-    ax.plot(temps_c, p_emitted, label=f"{name} Fresh", color=color, linewidth=2)
-    ax.axhline(p_absorbed, color=color, linestyle="--", alpha=0.7)
+    ax.plot(temps_c, p_emitted, label=f"{name} - Fresh (Radiated)", color=color, linewidth=2)
+    ax.axhline(p_absorbed, color=color, linestyle="--", alpha=0.7, label=f"{name} - Fresh (Absorbed)")
 
-    # Degraded (if enabled)
+    # Degraded - dashed/dotted lines (only if enabled)
     if simulate_degradation:
         p_emitted_deg = emitted_power(res["emissivity_deg"], temps_k)
         p_absorbed_deg = res["absorptivity_deg"] * solar_flux + res["emissivity_deg"] * STEFAN_BOLTZMANN_CONSTANT * 3**4
-        ax.plot(temps_c, p_emitted_deg, label=f"{name} Degraded", color=color, linestyle=":", linewidth=2)
-        ax.axhline(p_absorbed_deg, color=color, linestyle="-.", alpha=0.5)
+        
+        ax.plot(temps_c, p_emitted_deg, label=f"{name} - Degraded (Radiated)", color=color, linestyle=":", linewidth=2)
+        ax.axhline(p_absorbed_deg, color=color, linestyle="-.", alpha=0.5, label=f"{name} - Degraded (Absorbed)")
 
 ax.set_xlabel("Temperature (°C)")
 ax.set_ylabel("Power (W/m²)")
 ax.set_title("Radiated vs Absorbed Power (Fresh vs Degraded)")
-ax.legend()
+ax.legend(loc="upper left", bbox_to_anchor=(1.02, 1), borderaxespad=0., fontsize=9)
 ax.grid(True, alpha=0.3)
+
+# Make legend scrollable if too many items
+plt.tight_layout()
 st.pyplot(fig)
