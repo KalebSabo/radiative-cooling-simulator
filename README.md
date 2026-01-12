@@ -26,8 +26,6 @@ Notes on equations and derivations in `notes/` folder.
 
 ## References & Resources
 
-## References & Resources
-
 - [Link to REFERENCES file](References.md)
 
 Special thanks to open NASA resources and the aerospace thermal control community for making this knowledge accessible.
