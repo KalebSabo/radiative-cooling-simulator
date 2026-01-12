@@ -66,7 +66,7 @@ if mode == "Orbital Environment":
     selected_materials = st.sidebar.multiselect(
         "Select materials to compare",
         options=list(MATERIALS.keys()),
-        default=["White Paint (Z93-type)", "SpaceX Starship Tile (black coating)", "Optical Solar Reflector (OSR)"]
+        default=["Polished Aluminum", "SpaceX Starship Tile (black coating)"]
     )
 
     if not selected_materials:
