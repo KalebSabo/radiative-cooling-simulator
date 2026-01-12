@@ -59,7 +59,7 @@ solar_flux = None
 
 if mode == "Orbital Environment":
     st.sidebar.subheader("Orbital Environment Scenarios", divider=True)
-    scenario = st.sidebar.selectbox("Select Orbital Environment", options=list(ORBIT_SCENARIOS.keys()))
+    scenario = st.sidebar.selectbox("Select Orbital Environment", options=list(ORBIT_SCENARIOS.keys()), index=2)
     solar_flux = ORBIT_SCENARIOS[scenario]
     st.sidebar.write(f"**Solar Input Power:** {solar_flux:.1f} W/m²")
 
