@@ -34,7 +34,7 @@ st.sidebar.header("Settings")
 mode = st.sidebar.radio("Choose Mode", ["Orbital Environment", "Custom Settings"])
 graph_view = st.sidebar.checkbox(
     "Zoom on Intersections",
-    value=True,
+    value=False,
     help="Centers the graph on equilibrium crossing points for easier comparison"
 )
 simulate_degradation = st.sidebar.checkbox(
@@ -66,7 +66,7 @@ if mode == "Orbital Environment":
     selected_materials = st.sidebar.multiselect(
         "Select materials to compare",
         options=list(MATERIALS.keys()),
-        default=["White Paint (Z93-type)", "SpaceX Starship Tile (black coating)", "Optical Solar Reflector (OSR)", "Ideal Radiator"]
+        default=["White Paint (Z93-type)", "SpaceX Starship Tile (black coating)", "Optical Solar Reflector (OSR)"]
     )
 
     if not selected_materials:
