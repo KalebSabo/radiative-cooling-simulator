@@ -169,7 +169,7 @@ if graph_view and absorbed_powers:  # Zoom mode
     y_max = avg_absorbed + y_margin
 else:  # Full view
     y_min = 0
-    y_max = None  # Let matplotlib auto-scale (or set a high value if needed)
+    y_max = None  
 
 # Plot loop
 for i, (name, res) in enumerate(results.items()):
