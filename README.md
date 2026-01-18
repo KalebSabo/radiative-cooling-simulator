@@ -19,14 +19,15 @@ A interactive web tool for simulating radiative cooling in space environments. E
 
 Notes on equations and derivations in `notes/` folder.
 
-- [Planck's Law](Notes/01_Plancks_Law.md)
-- [Stefan-Boltzmann Law](Notes/02_Stefon_Boltzmann_Law.md)
+- [General Notes](01_Notes/Terms_Concepts.md)
+- [Planck's Law](01_Notes/01_Plancks_Law.md)
+- [Stefan-Boltzmann Law](01_Notes/02_Stefon_Boltzmann_Law.md)
 
-![Planck's Law Graph](Images/planck_radiation.png)
+![Planck's Law Graph](02_Images/planck_radiation.png)
 
 ## References & Resources
 
-- [Link to REFERENCES file](References.md)
+- [Link to REFERENCES file](REFERENCES.md)
 
 Special thanks to open NASA resources and the aerospace thermal control community for making this knowledge accessible.
 
