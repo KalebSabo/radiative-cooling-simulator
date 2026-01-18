@@ -10,11 +10,35 @@
 
 ### Conduction
 - Transfer of heat through *Direct molecular/atomic action* 
-- Governed by Fourier’s law: $  q = -k A \frac{dT}{dx}  $, where:
-    -  $  q  $ = heat transfer rate,
-    -  $  k  $ = thermal conductivity,
-    -  $  A  $ = cross-sectional area,
-    -  $  \frac{dT}{dx}  $ = temperature gradient.
+- Governed by Fourier’s law: 
+    - $  q = -k A \frac{dT}{dx}  $
+        -  $  q  $ = heat transfer rate,
+        -  $  k  $ = thermal conductivity,
+        -  $  A  $ = cross-sectional area,
+        -  $  \frac{dT}{dx}  $ = temperature gradient.
+- i.e. Heat moving through a metal bar
+
+### Convection
+- Transfer of heat through the *bulk movement of a fluid or gas*
+- Governed by Newton’s law of cooling: 
+    - $  q = h A (T_s - T_f)  $
+        - $  h  $ = convective heat transfer coefficient,
+        - $  A  $ = surface area,
+        - $  T_s  $ = surface temperature,
+        - $  T_f  $ = fluid temperature.
+- i.e. Boiling water (Hot water rises)
+
+### Radiative
+- Transfer of heat via *electromagnetic waves* (does not require a medium)
+- When a body, above absolute zero, emits/absorbs energy as electromagnetic waves
+- ALL objects emit and absorb thermal energy continuously 
+- Stefan-Boltzmann Law (for blackbody):
+    - $q = \sigma A T^4$
+        - $  q  $ = net heat transfer rate (W)
+        - $  \sigma  $ = Stefan-Boltzmann constant = $  5.67 \times 10^{-8}  $ W/m²·K⁴
+        - $  A  $ = surface area (m²)
+        - $  T  $ = absolute temperature (K)
+- i.e. black paint absorbing thermal electromagnetic waves from the sun. 
 
 
 
