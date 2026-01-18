@@ -2,6 +2,21 @@
 - The goal of this file is to explain common terminology in space engineering etc. 
 
 
+# Heat Exchanger Terminology
+
+### Heat Exchangers
+- Designed to transfer thermal energy between two or more fluids (without allowing them to mix)
+- Utilize principles in Conduction/Convection/Radiation
+
+### Conduction
+- Transfer of heat through *Direct molecular/atomic action* 
+- Governed by Fourier’s law: $  q = -k A \frac{dT}{dx}  $, where:
+    -  $  q  $ = heat transfer rate,
+    -  $  k  $ = thermal conductivity,
+    -  $  A  $ = cross-sectional area,
+    -  $  \frac{dT}{dx}  $ = temperature gradient.
+
+
 
 # Data Center Terminology
 
