@@ -40,6 +40,13 @@
         - $  T  $ = absolute temperature (K)
 - i.e. black paint absorbing thermal electromagnetic waves from the sun. 
 
+### Number of Transfer Units (NTU)
+- dimensionless, used to quantify the heat transfer potential between two fluids
+    - NTU = $\frac{U A}{C_(min)}$
+        - $U$ : Overall heat transfer coefficient (W/m²·K), which accounts for the thermal resistance between the fluids.
+        - $A$ : Heat transfer surface area (m²).
+        - $C_(min)$ : The smaller of the two fluid heat capacity rates ($C$ = $m$ × $c_p$, where $m$ is mass flow rate and $c_p$ is specific heat capacity).
+
 
 
 # Data Center Terminology
