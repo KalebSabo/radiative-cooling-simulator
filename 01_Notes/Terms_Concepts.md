@@ -42,12 +42,22 @@
 
 ### Number of Transfer Units (NTU)
 - dimensionless, used to quantify the heat transfer potential between two fluids
-    - NTU = $\frac{U A}{C_(min)}$
+    - NTU = $\frac{U A}{C_{\min}}$
         - $U$ : Overall heat transfer coefficient (W/m²·K), which accounts for the thermal resistance between the fluids.
         - $A$ : Heat transfer surface area (m²).
-        - $C_(min)$ : The smaller of the two fluid heat capacity rates ($C$ = $m$ × $c_p$, where $m$ is mass flow rate and $c_p$ is specific heat capacity).
+        - $C_{\min}$ : The smaller of the two fluid heat capacity rates ($C$ = $m$ × $c_p$, where $m$ is mass flow rate and $c_p$ is specific heat capacity).
 
+### Capacity Ratio 
+- dimensionless, used to characterize the thermal imbalance between two fluids 
+    - $C_r = \frac{C_{\min}}{C_{\max}}$
+        - $C_{\min}$: The smaller heat capacity rate (W/K or J/s·K).
+        - $C_{\max}$: The larger heat capacity rate.
+        - Where the heat capacity rate $C$ for each fluid is $C = m \cdot c_p  $, with $m$ being the mass flow rate (kg/s) and $c_p$ the specific heat capacity (J/kg·K).
+- $C_r$ ranges from 0 to 1:
 
+- $C_r$ = 0: Occurs when one fluid has an infinite capacity rate (e.g., in condensers or evaporators where phase change makes effective C infinite). The maximum heat transfer is limited only by the other fluid.
+- $C_r$ = 1: Balanced capacities; both fluids experience similar temperature changes.
+Values in between indicate asymmetry, where the fluid with higher C (often the coolant) changes temperature less.
 
 # Data Center Terminology
 
