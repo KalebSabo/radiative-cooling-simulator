@@ -43,9 +43,9 @@
 ### Number of Transfer Units (NTU)
 - dimensionless, used to quantify the heat transfer potential between two fluids
     - NTU = $\frac{U A}{C_{\min}}$
-        - $U$ : Overall heat transfer coefficient (W/m²·K), which accounts for the thermal resistance between the fluids.
-        - $A$ : Heat transfer surface area (m²).
-        - $C_{\min}$ : The smaller of the two fluid heat capacity rates ($C$ = $m$ × $c_p$, where $m$ is mass flow rate and $c_p$ is specific heat capacity).
+        - $U$ : **Overall heat transfer coefficient** (W/m²·K), which accounts for the thermal resistance between the fluids.
+        - $A$ : **Heat transfer surface area** (m²).
+        - $C_{\min}$ : The **smaller of the two fluid heat capacity rates** ($C$ = $m$ × $c_p$, where $m$ is mass flow rate and $c_p$ is specific heat capacity).
 
 ### Capacity Ratio 
 - dimensionless, used to characterize the thermal imbalance between two fluids 
@@ -58,6 +58,14 @@
 - $C_r$ = 0: Occurs when one fluid has an infinite capacity rate (e.g., in condensers or evaporators where phase change makes effective C infinite). The maximum heat transfer is limited only by the other fluid.
 - $C_r$ = 1: Balanced capacities; both fluids experience similar temperature changes.
 Values in between indicate asymmetry, where the fluid with higher C (often the coolant) changes temperature less.
+
+### Practical Application
+
+- **Design Impact**: If $C_r$ is low, the exchanger can achieve near-ideal performance with moderate NTU (i.e. smaller size or lower $U$ $A$). High $C_r$ requires larger NTU for the same heat exchanger effectiveness.
+
+- **In Space Contexts**: Space heat exchangers (e.g., on the ISS) often operate with $C_r$ around 0.5–0.8 to balance efficiency and mass. Microgravity doesn't directly alter $C_r$ but affects the heat transfer coefficients (h or U) that feed into NTU.
+
+- **Calculation Tip**: Always identify $C_{\min}$ and $C_{\max}$ from the fluids' properties and flows. If they're equal, $C_r$ = 1, and the maximum temperature change is symmetric.
 
 # Data Center Terminology
 
