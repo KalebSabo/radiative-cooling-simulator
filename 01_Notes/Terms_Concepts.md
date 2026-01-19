@@ -7,6 +7,11 @@
 ### Heat Exchangers
 - Designed to transfer thermal energy between two or more fluids (without allowing them to mix)
 - Utilize principles in Conduction/Convection/Radiation
+- Classified by Flow Arrangement: 
+    - Parallel/Co-Current Flow
+    - Counter/Counter-Current Flow
+    - Crossflow
+
 
 ### Conduction
 - Transfer of heat through *Direct molecular/atomic action* 
