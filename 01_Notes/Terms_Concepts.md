@@ -52,6 +52,13 @@
         - $A$ : **Heat transfer surface area** (m²).
         - $C_{\min}$ : The **smaller of the two fluid heat capacity rates** ($C$ = $m$ × $c_p$, where $m$ is mass flow rate and $c_p$ is specific heat capacity).
 
+### Heat Capacity Rate
+- Rate at which a fluid can absorb or release heat as it flows. 
+- $C = \dot{m} \cdot c_p$
+
+    - $  \dot{m}  $: Mass flow rate of the fluid (kg/s).
+    - $  c_p  $: Specific heat capacity at constant pressure (J/kg·K), which is a material property.
+
 ### Capacity Ratio 
 - dimensionless, used to characterize the thermal imbalance between two fluids 
     - $C_r = \frac{C_{\min}}{C_{\max}}$
