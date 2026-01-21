@@ -78,10 +78,18 @@ Values in between indicate asymmetry, where the fluid with higher C (often the c
 
 - **Calculation Tip**: Always identify $C_{\min}$ and $C_{\max}$ from the fluids' properties and flows. If they're equal, $C_r$ = 1, and the maximum temperature change is symmetric.
 
+### Heat Transfer Coefficient Measurements
+- **Overall ( $U$ )**
+    - Scopes entire system, variability assumes constants. Includes resistances.
+- **Average**
+    - Scopes over surface/length, variablity averages locals. Does not include resistances.
+- Local
+- Convective
+
 ### Number of Transfer Units (NTU)
 - dimensionless, used to quantify the heat transfer potential between two fluids
     - NTU = $\frac{U A}{C_{\min}}$
-        - $U$ : **Overall heat transfer coefficient** (W/m²·K), which accounts for the thermal resistance between the fluids.
+        - $U$ : **Overall** heat transfer coefficient (W/m²·K), which accounts for the thermal resistance between the fluids.
         - $A$ : **Heat transfer surface area** (m²).
         - $C_{\min}$ : The **smaller of the two fluid heat capacity rates** ($C$ = $m$ × $c_p$, where $m$ is mass flow rate and $c_p$ is specific heat capacity).
 
