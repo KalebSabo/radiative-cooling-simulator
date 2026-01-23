@@ -145,3 +145,4 @@ Values in between indicate asymmetry, where the fluid with higher C (often the c
 ### FEP - Fluorinated Ethylene Propylene
 - A fluoropolymer (a type of Teflon-like material) used as a coating or outer layer in MLI blankets. FEP is applied over metallized films (especially on the outer layers) for protection against atomic oxygen erosion, UV radiation, and environmental degradation in space. It has excellent thermal stability, low outgassing, and good optical properties (low solar absorptivity and high infrared emissivity in some configurations).
 
+### polydimethylsiloxane
