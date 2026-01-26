@@ -52,7 +52,7 @@
 
 
 ### Heat Capacity Rate
-- Rate at which a fluid can absorb or release heat as it flows. 
+- *Rate* at which a fluid can absorb or release heat as it **flows**. 
 - $C = \dot{m} \cdot c_p$
 
     - $  \dot{m}  $: Mass flow rate of the fluid (kg/s).
@@ -86,12 +86,31 @@ Values in between indicate asymmetry, where the fluid with higher C (often the c
 - Local
 - Convective
 
+### Log Mean Temperature Difference (LMTD)
+- Used to quantify the "driving force" of heat transfer (like voltage)
+
 ### Number of Transfer Units (NTU)
 - dimensionless, used to quantify the heat transfer potential between two fluids
     - NTU = $\frac{U A}{C_{\min}}$
         - $U$ : **Overall** heat transfer coefficient (W/m²·K), which accounts for the thermal resistance between the fluids.
         - $A$ : **Heat transfer surface area** (m²).
         - $C_{\min}$ : The **smaller of the two fluid heat capacity rates** ($C$ = $m$ × $c_p$, where $m$ is mass flow rate and $c_p$ is specific heat capacity).
+
+### Parallel/Co-Current Flow
+- Both fluids enter and exit the heat exchanger in the *same* direction. <-//<-
+- i.e. "double-pipe" heat exchangers.
+    - Advantages:
+        - Simple design, maintenance
+        - Low thermal stress on materials (Temp change is gradual/uniform)
+        - Good if both fluid temps need to be similar
+    - Disadvantages:
+        - Comparatively lower overall heat transfer efficiency to other arrangements
+        - Cold outlet temps cannot exceed hot outlet temps 
+        - Longer heat exchanger lines needed to match others heat transfer efficiency
+
+### Counter/Counter-Current Flow
+- Fluids enter and exit at *opposite* ends. ->//<-
+
 
 
 # Data Center Terminology
